@@ -10,7 +10,7 @@ while True:
     print("3. Sell Tablet(s)")
     print("0. Exit program")
     try:
-    num = int(input("What would you like to do?"))
+        num = int(input("What would you like to do?"))
     except ValueError:
         print("Please enter a number instead. try again.")
     if num < 0 or num > 3:
