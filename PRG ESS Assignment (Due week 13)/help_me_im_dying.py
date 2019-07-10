@@ -34,7 +34,7 @@ while True:
                 break
             except ValueError:
                 print("the sales code should be an number, try again")
-        isbn = input("Enter model name of tablet:")
+        model_name = input("Enter model name of tablet:")
         screen_size = input("What is the screen size? ")
         cost = 0
         while True:
@@ -47,7 +47,7 @@ while True:
             except ValueError:
                 print("The cost is not a number, try again")
         brand = input("What is the brand? ")
-        processor = input("what is the processor of this tablet? ")
+        processor = input("What is the processor of this tablet? ")
         os = input("What is the operating system?")
         ram = input("How much RAM does the tablet have? ")
         istorage = input("How much internal storage does the tablet have?")
@@ -62,7 +62,7 @@ while True:
             except ValueError:
                 print("The stocks is not a number, try again")
         newholder = []
-        newholder.append(isbn)
+        newholder.append(model_name)
         newholder.append(screen_size)
         newholder.append(cost)
         newholder.append(brand)
