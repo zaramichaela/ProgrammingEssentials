@@ -1,20 +1,26 @@
 num = 0
 i = 1
+import datetime
+x = datetime.datetime.now()
+sale = []
 info = ["model_name", "screen_size", "cost", "brand", "processor", "os", "ram", "istorage", "quantity"]
 holder = ["Samsung Galaxy Tab S 10.5", "10.50-inch", 178.99, "Samsung","Exynos 5 Octa","Android‎ ‎4.4.2" "KitKat","3GB","16GB", 20]
 stocks = {1: holder}
 while True:
-    print("Welcome to Zara's shop, here are your options:")
+    print("Welcome to Zara's Tablet shop, here are your options:")
     print("1. Add a new shipment")
     print("2. Current shipment(s)")
-    print("3. Sell Tablet(s)")
+    print("3. Create sale(s)")
+    print("4. Print sales details")
+    print("5. Print daily revenue select by date DD/MM/YYYY")
+    print("6. Print monthly revenue select by date MM/YYYY")
     print("0. Exit program")
     try:
         num = int(input("What would you like to do?"))
     except ValueError:
         print("Please enter a number instead. try again.")
-    if num < 0 or num > 3:
-        print("Whoops! That's not a feature the store has! Try again.")
+    if num < 0 or num > 6:
+        print("Whoops! That's not a feature that the store has! Try again.")
         continue
     elif num == 0:
         print("Have a nice day!")
@@ -85,7 +91,7 @@ while True:
     elif num == 3:
         for key in stocks:
             print(key,":",stocks[key])
-        quest = input("Select Category to sell(if neither, press Q/q):")
+        quest = input("Select code to sell(If neither, press Q/q):")
         if quest.lower() == "q":
             continue
         while True:
@@ -105,22 +111,73 @@ while True:
                 try:
                     sellnum = int(input("How many are you selling?"))
                 except ValueError:
-                    print("you did not enter an number. try again")
+                    print("You did not enter an number. Try again")
                     continue
                 if(item[8] < sellnum):
                     print("Not enough stocks, please purchase within stock amount")
                     continue
                 elif (sellnum <= 0):
-                    print("you have entered a negative or zero number. try again")
+                    print("you have entered a negative or zero number. Try again")
                     continue
                 else:
                     break
             stocks[itemfound][8] =stocks[itemfound][8]-sellnum
             saleprice = stocks[itemfound][2] * sellnum
-            print( sellnum , "number of" , stocks[itemfound][0] , "have been sold for the total price of " , saleprice)
-            ask = input("Do you wish to continue?(Y,q)")
-            if(ask.lower() == "q"):
-                print("Thank you")
+            print( sellnum , "number of" , stocks[itemfound][0] , "have been sold for the total price of $" ,saleprice)
+            date = datetime.date.today()
+
+            solditem = [date]
+            j = 0
+            for details in stocks[itemfound]:
+                #add all details into stocks besides quantity.
+                if(j == 8):
+                    solditem.append(sellnum)
+                else:
+                    solditem.append(details)
+                j += 1
+            sale.append(solditem)
+    #elif num == 4:
+    #    for item in sale:
+
+    elif num == 5:
+        date1 = 0
+        while True:
+            try:
+                day = int(input('Enter a day'))
+                month = int(input('Enter a month'))
+                year = int(input('Enter a year'))
+                date1 = datetime.date(year, month, day)
                 break
-            else:
-                continue
+            except ValueError:
+                print("Error, you did not enter the date correctly.")
+        inputdaysales = []
+        print (sale)
+        for item in sale:
+            #you have to find all the sales that occurs on the input date
+            if item[0] == date1:
+                inputdaysales.append(item)
+        totalrevenue = 0
+        for item in inputdaysales:
+            g = 0
+            for sales in item:
+                if g == 0:
+                    continue
+                print(info[g] , ":" , sales)
+                g += 1
+            
+            priceforitem = item[3]*item[8]
+            print("Total price:" , item[3]*item[8])
+            totalrevenue += priceforitem
+        print()
+        print("The total revenue for", date1.strftime('%d-%m-%Y') , "is $" + str(totalrevenue))
+    elif num == 6:
+        month = int(input('Enter a month'))
+        year = int(input('Enter a year'))
+        date2 = datetime.date(day, month, year)
+
+    ask = input("Do you wish to continue? Enter Q/q to quit.")
+    if(ask.lower() == "q"):
+        print("Thank you")
+        break
+    else:
+        continue
