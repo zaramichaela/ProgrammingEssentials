@@ -1,5 +1,4 @@
 import datetime
-from dateutil.relativedelta import relativedelta
 
 num = 0
 i = 1
@@ -7,7 +6,7 @@ x = datetime.datetime.now()
 sale = []
 info = ["model_name", "screen_size", "cost", "brand", "processor", "os", "ram", "istorage", "quantity"]
 infosales = ["date", "model_name", "screen_size", "cost", "brand", "processor", "os", "ram", "istorage", "quantity"]
-holder = ["Samsung Galaxy Tab S 10.5", "10.50-inch", 178.99, "Samsung","Exynos 5 Octa","Android ‎4.4.2 KitKat","3GB","16GB", 20]
+holder = ["Samsung Galaxy Tab S 10.5", "10.50-inch", 178.99, "Samsung","Exynos 5 Octa","Android ‎4.4.2","3GB","16GB", 20]
 stocks = {1: holder}
 while True:
     print("Welcome to Zara's Tablet shop, here are your options:")
@@ -173,7 +172,7 @@ while True:
         for item in sale:
             #you have to find all the sales that occurs on the input date
             if item[0] == date1:
-                #if the date equals inputted date
+                #if the date equals input date
                 g = 0
                 for details in item:
                     #if details is date
@@ -186,6 +185,7 @@ while True:
 
                 priceforitem = item[3]*item[9]
                 print("Total price:" , priceforitem)
+                print("=========="*10)
                 totalrevenue += priceforitem
         print()
         print("The total revenue for", date1.strftime('%d-%m-%Y') , "is $" + str(totalrevenue))
@@ -196,15 +196,20 @@ while True:
             try:
                 month = int(input("Enter a month:"))
                 year = int(input("Enter a year:"))
-                date1 = datetime.date(1, month, year )
-                date2 = datetime.date(1,  month, year) +relativedelta(day=31)
+                date1 = datetime.date(year, month, 1)
+                nextmonth = month + 1
+                if(month == 13):
+                    nextmonth = 1
+                    year +=1
+                date2 = datetime.date(year, nextmonth, 1)
                 break
             except ValueError:
                 print("Error, you did not enter the date correctly.")
+                traceback.print_exc()
         totalrevenue = 0
         for item in sale:
             #you have to find all the sales that occurs on the input date
-            if (date1 <= item[0] <= date2):
+            if (date1 <= item[0] < date2):
                 #if the date equals inputted date
                 g = 0
                 for details in item:
@@ -217,7 +222,7 @@ while True:
                     g += 1
                 priceforitem = item[3]*item[9]
                 print("Total price:" , priceforitem)
-                print("")
+                print("=========="*10)
                 totalrevenue += priceforitem
         print()
         print("The total revenue for the month of", date1.strftime('%m-%Y') , "is $" + str(totalrevenue))
