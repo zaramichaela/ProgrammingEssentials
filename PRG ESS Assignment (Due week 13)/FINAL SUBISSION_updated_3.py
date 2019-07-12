@@ -13,10 +13,10 @@ holder = ["Samsung Galaxy Tab S 10.5", "10.50-inch", 178.99, "Samsung","Exynos 5
 holder2 = ["Apple IPad Pro 11-inch ", "11-inch", 1499.99, "Apple","A12X Bionic","MAC","2GB","512GB", 30]
 holder3 = ["Huawei Mediapad T3", "8-inch", 350.00, "Huawei","Qualcomm Snapdragon 425","Android ‎7.0","2GB","16GB", 20]
 holder4 = ["Huawei Mediapad M5", "10.5-inch", 500.00, "Huawei","Qualcomm Snapdragon 725","Android ‎8.0","4GB","32GB", 5]
-stocks = {"a1": holder,
-        "a2": holder2,
-        "a3": holder3,
-        "a4": holder4,
+stocks = {1: holder,
+        2: holder2,
+        3: holder3,
+        4: holder4,
         }
 while True:
     print("Welcome to Zara's Tablet shop, here are your options:")
@@ -122,7 +122,6 @@ while True:
             print("Item is not found, please try again.")
             continue
         else:
-            print("The item you have selected is : " , item)
             date1 = 0
             while True:
                 try:
