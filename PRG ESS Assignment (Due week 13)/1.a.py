@@ -1,3 +1,6 @@
+# Admin Number: 194123U
+# Author: Zara Teo Xiao Xuan
+# PEM: CS1902
 model_name = input("What is the model name? ")
 screen_size = input("What is the screen size? ")
 cost = input("What is the cost? ")

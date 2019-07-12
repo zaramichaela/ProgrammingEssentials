@@ -1,3 +1,6 @@
+# Admin Number: 194123U
+# Author: Zara Teo Xiao Xuan
+# PEM: CS1902
 import datetime
 
 num = 0

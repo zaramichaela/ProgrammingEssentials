@@ -1,3 +1,6 @@
+# Admin Number: 194123U
+# Author: Zara Teo Xiao Xuan
+# PEM: CS1902
 specifications = {}
 
 def add_new_item():
@@ -87,10 +90,3 @@ def addsales():
      "quantity" : quantity,
      "total_price" : (specifications[code])["cost"] * quantity
     }
-
-
-
-
-
-
-

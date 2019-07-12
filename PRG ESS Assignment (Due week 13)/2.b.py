@@ -1,3 +1,6 @@
+# Admin Number: 194123U
+# Author: Zara Teo Xiao Xuan
+# PEM: CS1902
 def question():
     while True:
         start = input("Press enter to start or q/Q to quit.")

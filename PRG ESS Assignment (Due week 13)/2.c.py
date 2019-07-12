@@ -1,3 +1,6 @@
+# Admin Number: 194123U
+# Author: Zara Teo Xiao Xuan
+# PEM: CS1902
 def question():
     listdata = []
     while True:
@@ -79,4 +82,3 @@ def question():
         print("It is running on %s OS, has %s RAM and has %s internal storage." % (os, ram, i_storage))
 
 question()
-
